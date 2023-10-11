@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Carte Pour Paris</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+
+    <meta
+      name="title"
+      content="Carte Pour Paris &mdash; Pensée pour les vélos et piétons"
+    />
+    <meta
+      name="keywords"
+      content="paris carte bike vélo marche mobility mobilité trottinette"
+    />
+    <meta
+      name="description"
+      content="Une carte pour paris pensée pour les vélos et les piétons"
+    />
+
+    <meta name="revisit-after" content="2 days" />
+
+    <meta
+      property="og:title"
+      content="Carte Pour Paris &mdash; Pensée pour les vélos et piétons"
+    />
+    <meta property="og:image" content="/og-main.jpg" />
+    <meta property="og:site_name" content="Carte Pour Paris" />
+
+    <meta
+      property="og:description"
+      content="Une carte de Paris pensée pour les vélos et piétons"
+    />
+    <meta property="og:type" content="" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@_benjamintd" />
+    <meta name="twitter:title" content="Carte Pour Paris" />
+    <meta
+      name="twitter:description"
+      content="Une carte de Paris pensée pour les vélos et piétons"
+    />
+    <meta name="twitter:image" content="/og-main.jpg" />
+    <meta name="twitter:url" content="https://carte.pour.paris" />
+
+    <meta name="Page-Topic" content="" />
+    <meta name="author" content="" />
+    <meta name="copyright" content="" />
+
+    <meta property="og:url" content="" />
+    <meta property="fb:admins" content="" />
+    <meta property="og:email" content="" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
+  </head>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
+
+<script>
+  const token =
+    "pk.eyJ1IjoiYmVuamFtaW50ZCIsImEiOiJjbG10MHphMWMwMGc2Mmxsb2Q1ZzNyNjV4In0.l_bLHlHGbtyicw5-weLZ3g";
+  mapboxgl.accessToken = token;
+  var map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/benjamintd/ckewzgieb18ix19l5m00p7r1t",
+    center: [2.346517, 48.857704], // starting position [lng, lat]
+    zoom: 11, // starting zoom
+  });
+
+  // Add geolocate control to the map.
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+    }),
+    "bottom-right"
+  );
+
+  map.addControl(
+    new MapboxGeocoder({
+      accessToken: token,
+      mapboxgl: mapboxgl,
+      language: "fr-FR",
+    })
+  );
+</script>
